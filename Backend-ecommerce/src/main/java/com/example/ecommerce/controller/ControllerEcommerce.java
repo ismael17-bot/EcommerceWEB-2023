@@ -30,4 +30,8 @@ public class ControllerEcommerce {
         return productService.getProductById(id);
     }
 
+    @GetMapping("/products/{nome}")
+    public ProductDTO getProductByName(@PathVariable String nome) {
+        return productService.buscarPorNome(nome);
+    }
 }

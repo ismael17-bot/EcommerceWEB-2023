@@ -35,7 +35,9 @@ public class ProductService {
             return null;
         }
     }
-
+    public ProductDTO buscarPorNome(String nome) {
+        return converterDTO(productrepository.findByNome(nome));
+    }
     public ProductDTO converterDTO(Product product){
         ProductDTO dto = new ProductDTO(product);
         return dto;

@@ -1,5 +1,6 @@
 package com.example.ecommerce.entity;
 
+import com.example.ecommerce.DTO.UsuarioRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,4 +26,18 @@ public class Usuarios {
     private String pais;
     private String codigo_postal;
     private String telefone;
+
+
+    public Usuarios(UsuarioRequestDTO usuario){
+        this.nome = usuario.nome();
+        this.email = usuario.email();
+        this.senha = usuario.senha();
+        this.endereco = usuario.endereco();
+        this.cidade = usuario.cidade();
+        this.estado = usuario.estado();
+        this.pais = usuario.pais();
+        this.codigo_postal = usuario.codigo_postal();
+        this.telefone = usuario.telefone();
+    }
+
 }
