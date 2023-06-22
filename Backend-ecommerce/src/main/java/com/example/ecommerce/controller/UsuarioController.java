@@ -1,16 +1,13 @@
 package com.example.ecommerce.controller;
 
 
-import com.example.ecommerce.DTO.LoginFormDTO;
-import com.example.ecommerce.DTO.ProductRequestDTO;
-import com.example.ecommerce.DTO.UsuarioRequestDTO;
+import com.example.ecommerce.DTO.*;
 import com.example.ecommerce.entity.Usuarios;
 import com.example.ecommerce.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("Usuario")
@@ -19,9 +16,12 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
+    @GetMapping
+    public List<UsuarioDTO> getAllUsers() {
+        return usuarioService.getAllUsers();
+    }
+    @PostMapping("/add")
     public void addUser(@RequestBody UsuarioRequestDTO usuario) {
-
         usuarioService.addUser(usuario);
     }
 
