@@ -37,4 +37,12 @@ public class CategoriaService {
     public List<CategoriaDTO> getAllCategorias() {
         return categoriaRepository.findAll().stream().map(CategoriaDTO::new).toList();
     }
+
+    public void editCategoria(Integer id, CategoriaRequestDTO categoria) {
+        Optional<Categorias> updateCategoria =  categoriaRepository.findById(id);
+        updateCategoria.get().setNome(categoria.nome());
+        updateCategoria.get().setDescricao(categoria.descricao());
+
+        categoriaRepository.save(updateCategoria.get());
+    }
 }

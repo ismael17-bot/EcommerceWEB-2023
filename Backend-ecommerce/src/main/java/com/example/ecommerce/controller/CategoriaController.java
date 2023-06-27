@@ -25,6 +25,11 @@ public class CategoriaController {
         categoriaService.addCategoria(categoria);
     }
 
+    @PostMapping("/edit/{id}")
+    public void updtadeCategoria(@PathVariable Integer id,@RequestBody CategoriaRequestDTO categoria){
+        categoriaService.editCategoria(id,categoria);
+    }
+
     @GetMapping("/product/{id}")
     public CategoriaDTO getEspecficProductById(@PathVariable Integer id) {
         return categoriaService.getCategoriaById(id);

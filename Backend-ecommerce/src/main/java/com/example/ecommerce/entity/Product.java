@@ -10,8 +10,8 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Table(name = "PRODUTO")
-@Entity(name = "PRODUTO")
+@Table(name = "PRODUTOS")
+@Entity(name = "PRODUTOS")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,7 +25,7 @@ public class Product {
     private String descricao;
     private BigDecimal preco;
     private int estoque;
-    private int fgtipoproduto;
+
     private String marca;
     private BigDecimal peso;
     private BigDecimal largura;
@@ -35,8 +35,11 @@ public class Product {
     private Date datacadastro;
     private String imagemURL;
 
+    @ManyToOne
+    @JoinColumn(name = "fgtipoproduto", nullable = false)
+    Categorias categorias;
 
-    public Product(ProductRequestDTO product){
+    public Product(ProductRequestDTO product, Categorias categorias){
         this.cdproduto = product.cdproduto();
         this.nome = product.nome();
         this.descricao = product.descricao();
@@ -49,7 +52,7 @@ public class Product {
         this.comprimento = product.comprimento();
         this.cor = product.cor();
         this.imagemURL = product.imagemURL();
-        this.fgtipoproduto = product.fgtipoproduto();
+        this.categorias = categorias;
         this.datacadastro = product.datacadastro();
     }
 

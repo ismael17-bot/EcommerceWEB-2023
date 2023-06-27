@@ -2,7 +2,9 @@ package com.example.ecommerce.service;
 
 import com.example.ecommerce.DTO.ProductDTO;
 import com.example.ecommerce.DTO.ProductRequestDTO;
+import com.example.ecommerce.entity.Categorias;
 import com.example.ecommerce.entity.Product;
+import com.example.ecommerce.repository.CategoriaRepository;
 import com.example.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productrepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     public List<ProductDTO> getAllProducts() {
         List<ProductDTO> products = productrepository.findAll().stream().map(ProductDTO::new).toList();
@@ -22,7 +26,8 @@ public class ProductService {
     }
 
     public void addProduct(ProductRequestDTO product) {
-        Product productData = new Product(product);
+        Categorias categorias = categoriaRepository.getById(product.fgtipoproduto());
+        Product productData = new Product(product, categorias);
         productrepository.save(productData);
     }
 
@@ -35,6 +40,7 @@ public class ProductService {
             return null;
         }
     }
+
     public ProductDTO buscarPorNome(String nome) {
         return converterDTO(productrepository.findByNome(nome));
     }

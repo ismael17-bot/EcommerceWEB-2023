@@ -2,12 +2,14 @@ package com.example.ecommerce.controller;
 
 
 import com.example.ecommerce.DTO.*;
+import com.example.ecommerce.entity.Token;
 import com.example.ecommerce.entity.Usuarios;
 import com.example.ecommerce.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("Usuario")
@@ -38,5 +40,7 @@ public class UsuarioController {
             return "Usuário não encontrado ou senha incorreta!";
         }
     }
+
+    //logout
 
 }

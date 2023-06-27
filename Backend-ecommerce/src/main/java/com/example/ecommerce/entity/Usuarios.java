@@ -1,5 +1,6 @@
 package com.example.ecommerce.entity;
 
+import com.example.ecommerce.DTO.UsuarioDTO;
 import com.example.ecommerce.DTO.UsuarioRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,8 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "USUARIOS")
-@Entity(name = "USUARIOS")
+@Table(name = "usuarios")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,6 +30,19 @@ public class Usuarios {
 
 
     public Usuarios(UsuarioRequestDTO usuario){
+        this.nome = usuario.nome();
+        this.email = usuario.email();
+        this.senha = usuario.senha();
+        this.endereco = usuario.endereco();
+        this.cidade = usuario.cidade();
+        this.estado = usuario.estado();
+        this.pais = usuario.pais();
+        this.codigo_postal = usuario.codigo_postal();
+        this.telefone = usuario.telefone();
+    }
+
+    public Usuarios(UsuarioDTO usuario){
+        this.user_id = usuario.user_id();
         this.nome = usuario.nome();
         this.email = usuario.email();
         this.senha = usuario.senha();
