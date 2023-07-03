@@ -1,0 +1,8 @@
+.main-content .layout {
+    max-width: calc(100% - 20px);
+    margin: 0 auto;
+  }
+  
+  .main-content .layout.md {
+    max-width: 1200px;
+  }

@@ -28,16 +28,16 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginFormDTO form) {
+    public Boolean login(@RequestBody LoginFormDTO form) {
         String email = form.getEmail();
         String senha = form.getSenha();
 
         Usuarios usuario = usuarioService.autenticarUsuario(email, senha);
 
         if (usuario != null) {
-            return "Usuário autenticado com sucesso!";
+            return true;
         } else {
-            return "Usuário não encontrado ou senha incorreta!";
+            return false;
         }
     }
 
